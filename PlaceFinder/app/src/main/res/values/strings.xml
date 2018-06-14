@@ -11,5 +11,8 @@
     <string name="button_login">Login</string>
     <string name="tv_sign_up">Sign up?</string>
     <string name="forgot_password">Forgot password?</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="text_email">Email</string>
 
 </resources>

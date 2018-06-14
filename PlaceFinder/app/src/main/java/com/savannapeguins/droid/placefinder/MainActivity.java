@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.savannapeguins.droid.placefinder.Fragments.CreateAccountFragment;
 import com.savannapeguins.droid.placefinder.Fragments.HomeFragment;
 import com.savannapeguins.droid.placefinder.Fragments.LoginFragment;
 
@@ -49,8 +50,11 @@ private DrawerLayout drawer;
            case R.id.nav_home:
                fragmentClass= HomeFragment.class;
                break;
-           case R.id.nav_account:
+           case R.id.nav_login:
                fragmentClass= LoginFragment.class;
+               break;
+           case R.id.nav_create_ac:
+               fragmentClass= CreateAccountFragment.class;
                break;
            default:
                fragmentClass=HomeFragment.class;
