@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "850911182874",
+    "firebase_url": "https://firestorecloud-eef9b.firebaseio.com",
+    "project_id": "firestorecloud-eef9b",
+    "storage_bucket": "firestorecloud-eef9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850911182874:android:a11601e872e032df",
+        "android_client_info": {
+          "package_name": "com.savannapeguins.droid.firestorecloud"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850911182874-4b4gliug3t00hpa29tlv57jh4q7jsb6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.savannapeguins.droid.firestorecloud",
+            "certificate_hash": "0d67140aa52f3fe63c4d94fb7a888f9e8f224039"
+          }
+        },
+        {
+          "client_id": "850911182874-0r02laglnr53hakkd0n7m0duh0evnnmu.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "850911182874-0r02laglnr53hakkd0n7m0duh0evnnmu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpvEHYcX4mVox-ZYg04h9slUPt-qjhahI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850911182874-0r02laglnr53hakkd0n7m0duh0evnnmu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
