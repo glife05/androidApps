@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddBusinessActivity" />
+        <activity
+            android:name=".ProfilePageActivity"
+            android:label="@string/title_activity_profile_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

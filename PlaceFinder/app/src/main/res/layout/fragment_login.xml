@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/loginFrameLayout"
     tools:context=".Fragments.LoginFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -57,19 +58,29 @@
         android:layout_height="wrap_content"
         android:onClick="loginButtonClicked"
         android:id="@+id/button_login"
-        android:text="@string/button_login"/>
+        android:text="@string/button_login"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/tv_sign_up"
+        android:layout_centerHorizontal="true"
         android:id="@+id/tv_sign_up"
-        android:layout_below="@+id/button_login"/>
+        android:layout_below="@+id/button_login"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorPrimary"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_sign_up"
-        android:text="@string/forgot_password"/>
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/tv_forgot_password"
+      />
 
 
 </RelativeLayout>

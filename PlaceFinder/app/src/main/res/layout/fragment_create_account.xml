@@ -76,7 +76,20 @@
             android:layout_below="@id/text_password_ac"
             android:text="Create account"
             android:id="@+id/createAccount"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
              />
+        <TextView
+            android:paddingTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/createAccount"
+            android:text="Login?"
+            android:id="@+id/tv_login"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            />
 
     </RelativeLayout>
 

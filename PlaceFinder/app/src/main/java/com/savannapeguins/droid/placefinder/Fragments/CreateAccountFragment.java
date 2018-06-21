@@ -1,18 +1,22 @@
 package com.savannapeguins.droid.placefinder.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,7 +49,7 @@ public class CreateAccountFragment extends Fragment {
     private static final String KEY_TEST="test";
 
    private TextInputLayout textInputFirstName,textInputLastName,textInputPassword,textInputEmailAddress;
-  private EditText edTest;
+   private TextView tvLogin;
    private Button mCreateButton;
 //    //Reference to Firestore
    FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -98,56 +102,82 @@ public class CreateAccountFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
 
-      View rootView= inflater.inflate(R.layout.fragment_create_account, container, false);
-      textInputFirstName =rootView.findViewById(R.id.text_first_name);
-      textInputLastName=rootView.findViewById(R.id.text_last_name);
-      textInputEmailAddress=rootView.findViewById(R.id.text_email);
-      textInputPassword=rootView.findViewById(R.id.text_password_ac);
-      mCreateButton=rootView.findViewById(R.id.createAccount);
-      edTest=(EditText)rootView.findViewById(R.id.edTest);
+        View rootView = inflater.inflate(R.layout.fragment_create_account, container, false);
+        textInputFirstName = rootView.findViewById(R.id.text_first_name);
+        textInputLastName = rootView.findViewById(R.id.text_last_name);
+        textInputEmailAddress = rootView.findViewById(R.id.text_email);
+        textInputPassword = rootView.findViewById(R.id.text_password_ac);
+        mCreateButton = rootView.findViewById(R.id.createAccount);
+        tvLogin=(TextView) rootView.findViewById(R.id.tv_login);
 
-      mCreateButton.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
+      //firestore data capture----------------------------------------------------------------------
 
-              String first_name=textInputFirstName.getEditText().getText().toString();
-              String last_name=textInputLastName.getEditText().getText().toString();
-              String email=textInputEmailAddress.getEditText().getText().toString();
-              String password=textInputEmailAddress.getEditText().getText().toString();
+        mCreateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-              Map<String,Object>user=new HashMap<>();
-              user.put(KEY_FNAME,first_name);
-              user.put(KEY_LNAME,last_name);
-              user.put(KEY_EMIAL,email);
-              user.put(KEY_PASSWORD,password);
-              db.collection("Users")
-                      .add(user)
-                      .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                          @Override
-                          public void onSuccess(DocumentReference documentReference) {
-                              Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-                              Log.d(TAG, "onSuccess: DocumentSnapshot added with ID: "+ documentReference.getId());
-                          }
-                      })
-                      .addOnFailureListener(new OnFailureListener() {
-                          @Override
-                          public void onFailure(@NonNull Exception e) {
-                              Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-                              Log.d(TAG, "onFailure: Error adding document ",e);
-                          }
-                      });
-              //Toast.makeText(getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                String first_name = textInputFirstName.getEditText().getText().toString();
+                String last_name = textInputLastName.getEditText().getText().toString();
+                String email = textInputEmailAddress.getEditText().getText().toString();
+                String password = textInputPassword.getEditText().getText().toString();
+
+                if (first_name.isEmpty()) {
+                    textInputFirstName.setError("First name required");
+                    textInputFirstName.requestFocus();
+                } else if (last_name.isEmpty()) {
+                    textInputLastName.setError("Last name is required");
+                    textInputLastName.requestFocus();
+                } else if (email.isEmpty()) {
+                    textInputEmailAddress.setError("Email address required");
+                    textInputEmailAddress.requestFocus();
+                } else if (password.isEmpty()) {
+                    textInputPassword.setError("Password required");
+                    textInputPassword.requestFocus();
+                } else {
+
+                    Map<String, Object> user = new HashMap<>();
+                    user.put(KEY_FNAME, first_name);
+                    user.put(KEY_LNAME, last_name);
+                    user.put(KEY_EMIAL, email);
+                    user.put(KEY_PASSWORD, password);
+                    db.collection("Users")
+                            .add(user)
+                            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "onSuccess: DocumentSnapshot added with ID: " + documentReference.getId());
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
+                                    Log.d(TAG, "onFailure: Error adding document ", e);
+                                }
+                            });
+                    //Toast.makeText(getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+
+                }//close if statement----------------------------------------------------------------------
+            }
+        });
+
+        //firestore data capture ends here-----------------------------------------------------------------
 
 
+        //tvLoginScreen starts here*************************************************************************
+
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //ToDo:open login screen
 
 
-
-          }
-      });
-
+            }
+        });
+        //ends here tvLogin*********************************************************************************
       return rootView;
     }
 
@@ -194,40 +224,5 @@ public class CreateAccountFragment extends Fragment {
     }
 
 
-    //FragmentActions
-    public void create_account_button(View v)
-    {
-//        String firstName,lastName,email,password;
-//        firstName=textInputFirstName.getEditText().getText().toString();
-//        lastName=textInputLastName.getEditText().getText().toString();
-//        email=textInputEmailAddress.getEditText().getText().toString();
-//        password=textInputPassword.getEditText().getText().toString();
-//
-//        Map<String,Object>users=new HashMap<>();
-//        users.put(KEY_FNAME,firstName);
-//        users.put(KEY_LNAME,lastName);
-//        users.put(KEY_EMIAL,email);
-//        users.put(KEY_PASSWORD,password);
-//
-//        //pass to firebase
-//        //create collections followed by document
-//       // FirebaseFirestore db=FirebaseFirestore.getInstance();
-//        db.collection("Users").document("Users Account").set(users)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Toast.makeText(getContext(), "User created", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
-//                        Log.d(TAG, e.toString());
-//                    }
-//                });
-//
-//
-  }
+
 }
