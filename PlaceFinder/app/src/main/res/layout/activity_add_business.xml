@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="25dp"
+        android:paddingTop="15dp"
         android:text="@string/tv_string_add_business_header"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
@@ -39,14 +39,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_business_name"
-        app:errorEnabled="true">
+                app:errorEnabled="true">
 
         <Spinner
+            android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:paddingTop="2dp">
+            android:paddingTop="2dp"
+            android:entries="@array/biz"
+            android:prompt="@string/biz_industry">
 
         </Spinner>
 
@@ -119,6 +122,12 @@
             android:paddingTop="2dp" />
 
     </android.support.design.widget.TextInputLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Priority"
+        android:inputType="number"
+        android:layout_below="@+id/ed_contact_person"/>
 
     <Button
         android:id="@+id/buttonAddBusiness"

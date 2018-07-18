@@ -23,4 +23,22 @@
     <string name="building_name">Building name</string>
     <string name="title_activity_profile_page">ProfilePageActivity</string>
 
+    <string name="biz_industry">Choose industry</string>
+    <string name="account_details">Account details</string>
+    <string-array name="biz">
+        <item>Computer industry</item>
+        <item>Agriculture</item>
+        <item>Pharmaceutical</item>
+        <item>Construction</item>
+        <item>Entertainment</item>
+        <item>Food industry</item>
+        <item>Health care industry</item>
+        <item>Electronics industry</item>
+        <item>Hospitality</item>
+        <item>Telecommunications</item>
+        <item>Service industry</item>
+        <item>Others</item>
+    </string-array>
+
+
 </resources>

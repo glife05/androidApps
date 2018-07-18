@@ -19,8 +19,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.savannapeguins.droid.placefinder.R;
@@ -53,6 +57,7 @@ public class CreateAccountFragment extends Fragment {
    private Button mCreateButton;
 //    //Reference to Firestore
    FirebaseFirestore db=FirebaseFirestore.getInstance();
+   private FirebaseAuth mAuth;
 
     /*ENDS HERE*/
     
@@ -111,12 +116,13 @@ public class CreateAccountFragment extends Fragment {
         textInputPassword = rootView.findViewById(R.id.text_password_ac);
         mCreateButton = rootView.findViewById(R.id.createAccount);
         tvLogin=(TextView) rootView.findViewById(R.id.tv_login);
-
+        mAuth= FirebaseAuth.getInstance();
       //firestore data capture----------------------------------------------------------------------
 
         mCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //createFirebaseUser();
 
                 String first_name = textInputFirstName.getEditText().getText().toString();
                 String last_name = textInputLastName.getEditText().getText().toString();
@@ -147,7 +153,8 @@ public class CreateAccountFragment extends Fragment {
                             .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-                                    Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                    //Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+                                    createFirebaseUser();
                                     Log.d(TAG, "onSuccess: DocumentSnapshot added with ID: " + documentReference.getId());
                                 }
                             })
@@ -164,6 +171,8 @@ public class CreateAccountFragment extends Fragment {
             }
         });
 
+
+
         //firestore data capture ends here-----------------------------------------------------------------
 
 
@@ -173,13 +182,31 @@ public class CreateAccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //ToDo:open login screen
-
+              //  startActivity(new Intent(getActivity(),LoginFragment.class));
 
             }
         });
         //ends here tvLogin*********************************************************************************
       return rootView;
     }
+    //create new Firebase user using email verification************************************
+    public void createFirebaseUser()
+    {
+        final String email = textInputEmailAddress.getEditText().getText().toString();
+        String password = textInputPassword.getEditText().getText().toString();
+        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+           @Override
+           public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful())
+                {
+                    Toast.makeText(getContext(), "User created successfully,go to login", Toast.LENGTH_LONG).show();
+
+                }
+           }
+       });
+    }
+
+    //create new firebase user using email verification ends here*********************************************
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
