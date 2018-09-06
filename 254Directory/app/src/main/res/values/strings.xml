@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">254 Directory</string>
+    <string name="ed_username">Username</string>
+    <string name="text_email">Email</string>
+    <string name="text_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="tv_new_user">New user? Create account</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="tvHeadeCreateAccount">Create account</string>
+    <string name="button_create_acc">Create</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="login_link">Already registered?Login here</string>
+    <string name="tv_hearder_publish">Add business</string>
+    <string name="tv_biz_name">Business name</string>
+
+    <string name="PhoneNumber">Phone number</string>
+    <string name="contact_person">Contact person</string>
+    <string name="location">Location</string>
+    <string name="button_publish_biz">Publis business</string>
+    <string name="profile_page">Profile Page</string>
+    <string name="email_address">Email address</string>
+    <string name="tv_contact_person">Contact person</string>
+    <string name="tv_location">Location</string>
+    <string name="tv_business_phon">Phone number:</string>
+    <string name="sure_text">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+</resources>

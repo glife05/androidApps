@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/mAdd"
+        android:title="Add Business"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mProfilePage"
+        android:title="Profile Page"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mAbout"
+        android:title="About"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/mSignOut"
+        android:title="Sign out"
+        app:showAsAction="never" />
+
+</menu>
