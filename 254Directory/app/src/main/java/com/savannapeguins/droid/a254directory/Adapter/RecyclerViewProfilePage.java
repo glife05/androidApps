@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.savannapeguins.droid.a254directory.Activities.UpdateActivity;
 import com.savannapeguins.droid.a254directory.Activities.DetailsActivity;
 import com.savannapeguins.droid.a254directory.Model.Listings;
 import com.savannapeguins.droid.a254directory.Model.Users;
@@ -26,11 +27,12 @@ public class RecyclerViewProfilePage extends RecyclerView.Adapter<RecyclerViewPr
     private List<Listings>listingsList;
     private Context context;
     private FirebaseFirestore firestoreDB;
-    //Declare variables for the confirmation dialog to delete items from that database
-    private AlertDialog.Builder alertDialogBuilder;
-    private AlertDialog dialog;
-    private LayoutInflater conLayoutInflater;
-    //ends here alertDialog
+     //variables for putExtra
+    public static final String TEXT_EMAIL="EmailAddress";
+    public static final String TEXT_BUSINESS="BusinessName";
+    public static final String TEXT_LOCATION="BusinessLocation";
+    public static final String TEXT_PHONE="BusinessPhone";
+    public static final String TEXT_CONTACT="BusinessContact";
     public RecyclerViewProfilePage(List<Listings> listingsList, Context context, FirebaseFirestore firestoreDB) {
         this.listingsList = listingsList;
         this.context = context;
@@ -83,38 +85,40 @@ public class RecyclerViewProfilePage extends RecyclerView.Adapter<RecyclerViewPr
             imDelete.setOnClickListener(this);
 
         }
-        //****starts*******************************************************************************
-        public void confirmationDialog(Context c){
-            //creates and AlertDialog
-            alertDialogBuilder=new AlertDialog.Builder(c);
-            conLayoutInflater=LayoutInflater.from(c);
-            View view=conLayoutInflater.inflate(R.layout.confirmation_dialog,null);
-
-            Button noButton=(Button)view.findViewById(R.id.btnNo);
-            Button yesButton=(Button)view.findViewById(R.id.btnYes);
-
-            alertDialogBuilder.setView(view);
-            dialog=alertDialogBuilder.create();
-            dialog.show();
 
 
-        }
-
-
-
+     //ImageView click events starts here**********************************************************
         @Override
         public void onClick(View v) {
             switch (v.getId())
             {
                 case R.id.imViewDelete:
+
+                    String varBizNameDetails=varTvBizName.getText().toString();
+                    String varEmailDetails=varTvEmail.getText().toString();
                     Intent intentDetailsActivity=new Intent(context,DetailsActivity.class);
-                    //intentAddBusiness.putExtra(EDITEXT_EMAIL_PROFILE_PAGE,varEM);
+                    intentDetailsActivity.putExtra(TEXT_BUSINESS,varBizNameDetails);
+                    intentDetailsActivity.putExtra(TEXT_EMAIL,varEmailDetails);
                     context.startActivity(intentDetailsActivity);
                     break;
 
                 case R.id.imViewEdit:
+                    String bizNameDetails=varTvBizName.getText().toString();
+                    String bizEmailDetails=varTvEmail.getText().toString();
+                    String bizContactDetails=varTvContact.getText().toString();
+                    String bizPhoneDetails=varTvPhone.getText().toString();
+                    String bizLocationDetails=varTvLocation.getText().toString();
+                    //starts AddBusinessActivity for editing purposes*******************************
+                    Intent intentEditDetails=new Intent(context,UpdateActivity.class);
+                    intentEditDetails.putExtra(TEXT_BUSINESS,bizNameDetails);
+                    intentEditDetails.putExtra(TEXT_EMAIL,bizEmailDetails);
+                    intentEditDetails.putExtra(TEXT_CONTACT,bizContactDetails);
+                    intentEditDetails.putExtra(TEXT_PHONE,bizPhoneDetails);
+                    intentEditDetails.putExtra(TEXT_LOCATION,bizLocationDetails);
+                    context.startActivity(intentEditDetails);
+                    //end here***********************************************************************
 
-                    break;
+                 break;
             }
         }
         //**ends************************************************************************************

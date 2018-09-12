@@ -20,7 +20,7 @@ import com.savannapeguins.droid.a254directory.R;
 public class AddBusinessActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView tvVarEmail;
     private TextInputLayout bName,bPhone,bContactPerson,bLocation;
-    private Button btnPublish;
+    private Button btnPublish,btnUpdate;
     private ProgressBar progressBarAddBiz;
 
     //Firestore variables
@@ -36,10 +36,12 @@ public class AddBusinessActivity extends AppCompatActivity implements View.OnCli
         bContactPerson=findViewById(R.id.edContactPerson);
         bLocation=findViewById(R.id.edLocation);
         btnPublish=findViewById(R.id.bPublishBusiness);
+        btnUpdate=findViewById(R.id.btnUpdateBusiness);
         progressBarAddBiz=findViewById(R.id.progressBarBiz);
 
         firestoreDB=FirebaseFirestore.getInstance();
         btnPublish.setOnClickListener(this);//click event
+        btnUpdate.setOnClickListener(this);//click event
     }
     //action when AddBusinessActivity button is clicked*********************************************
     @Override
@@ -48,6 +50,10 @@ public class AddBusinessActivity extends AppCompatActivity implements View.OnCli
             case R.id.bPublishBusiness:
                 //ToDo button event
                 publishBusiness();
+                break;
+            case R.id.btnUpdateBusiness:
+                //ToDo update database
+
                 break;
 
         }
@@ -65,7 +71,7 @@ public class AddBusinessActivity extends AppCompatActivity implements View.OnCli
         String varContact=bContactPerson.getEditText().getText().toString();
         String varLocation=bLocation.getEditText().getText().toString();
 
-        //validate user entries------------------------
+        //validate user entries---------------------------------------------------------------------
         if (varName.isEmpty()){
             bName.setError("Name is required");
             bName.requestFocus();

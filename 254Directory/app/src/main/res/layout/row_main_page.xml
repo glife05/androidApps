@@ -7,7 +7,7 @@
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp"
-    app:cardBackgroundColor="#FFFFE8">
+    app:cardBackgroundColor="#E8EAF6">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="5dp"
             android:text="Business name:"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             android:textStyle="bold"
             android:typeface="sans"
@@ -46,6 +47,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="3dp"
             android:text="Contact:"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             android:textStyle="bold"
             app:fontFamily="sans-serif-condensed" />
@@ -68,6 +70,7 @@
             android:layout_marginLeft="7dp"
             android:layout_marginTop="3dp"
             android:text="Contact Person:"
+            android:textColor="@android:color/background_dark"
             android:textSize="18sp"
             android:textStyle="bold"
             app:fontFamily="sans-serif-condensed" />

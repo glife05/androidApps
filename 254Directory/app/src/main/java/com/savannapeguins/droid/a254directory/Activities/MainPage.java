@@ -101,5 +101,13 @@ public class MainPage extends AppCompatActivity {
 
     }
 
-    //ends menu layout implementation actions=============================================
+    //ends menu layout implementation actions=================================================================
+
+    //******close LoginActivity onBackPress*********************************************************************
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        return;
+            }
+    //***close LoginActivity onBackPress ENDS HERE**************************************************************
 }

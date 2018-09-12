@@ -22,7 +22,8 @@
         <activity android:name=".Activities.MainPage" />
         <activity android:name=".Activities.AddBusinessActivity" />
         <activity android:name=".Activities.ProfilePageActivity" />
-        <activity android:name=".Activities.DetailsActivity"></activity>
+        <activity android:name=".Activities.DetailsActivity" />
+        <activity android:name=".Activities.UpdateActivity"></activity>
     </application>
 
 </manifest>

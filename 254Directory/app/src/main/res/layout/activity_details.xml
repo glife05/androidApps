@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/common_google_signin_btn_text_light_disabled"
+    tools:context=".Activities.DetailsActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_header_details"
+            android:text="@string/profile_page"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_header_details"
+            android:layout_marginLeft="5dp"
+            android:text="@string/tv_biz_name"
+            android:layout_marginTop="6dp"
+            android:id="@+id/tv_biz_details"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_BizDetails"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_biz_details"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:text="Name goes here..." />
+
+        <TextView
+            android:id="@+id/tv_EmailDetails"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_BizDetails"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="6dp"
+            android:text="Email goes here...."
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/imViewDeleteDetails"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_header_details"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>
