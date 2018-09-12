@@ -3,14 +3,18 @@ package com.savannapeguins.droid.a254directory.Activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +38,10 @@ public class MainPage extends AppCompatActivity {
     private RecyclerView mainPageRecyclerView;
     private RecyclerViewMainPage mainPageAdapter;
     private FirebaseFirestore db;
+    //layout inflater for singout
+    private LayoutInflater inflateLayout;
+    private AlertDialog dialogBox;
+    private AlertDialog.Builder buildAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +102,8 @@ public class MainPage extends AppCompatActivity {
                 Intent intent2=new Intent(this,ProfilePageActivity.class);
                 this.startActivity(intent2);
                 return true;
+            case R.id.mSignOut:
+                signOut();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -103,11 +113,36 @@ public class MainPage extends AppCompatActivity {
 
     //ends menu layout implementation actions=================================================================
 
-    //******close LoginActivity onBackPress*********************************************************************
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        return;
+    //******close application*********************************************************************
+    public void signOut(){
+        buildAlertDialog =new AlertDialog.Builder(MainPage.this);
+        inflateLayout=LayoutInflater.from(MainPage.this);
+        View view=inflateLayout.inflate(R.layout.sign_out_dialog,null);
+
+        //reference sign_out_dialog widgets
+        Button yesBtn=(Button)view.findViewById(R.id.btnSignOutYES);
+        Button noBtn=(Button)view.findViewById(R.id.btnSignOutNO);
+
+        buildAlertDialog.setView(view);
+        dialogBox=buildAlertDialog.create();
+        dialogBox.show();
+
+        //button click events
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Todo:close application
+                finish();
             }
-    //***close LoginActivity onBackPress ENDS HERE**************************************************************
+        });
+
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogBox.dismiss();
+            }
+        });
+    }
+
+    //***close  ENDS HERE**************************************************************
 }

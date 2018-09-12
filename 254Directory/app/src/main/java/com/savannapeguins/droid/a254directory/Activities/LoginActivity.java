@@ -98,7 +98,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             String emailText=mEmail.getEditText().getText().toString();
                             Intent intent=new Intent(LoginActivity.this,MainPage.class);
                             intent.putExtra(LOGIN_EMAIL_EDITTEXT,emailText);
-                            startActivity(intent);
+                            startActivity(intent);//starts MainPage activity
+                            finish();//kills the activity after login
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
