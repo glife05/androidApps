@@ -43,6 +43,10 @@ public class MainPage extends AppCompatActivity {
     private AlertDialog dialogBox;
     private AlertDialog.Builder buildAlertDialog;
 
+    //layout inflater for about
+    private LayoutInflater inflateLayout2;
+    private AlertDialog dialogBox2;
+    private AlertDialog.Builder buildAlertDialog2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +108,8 @@ public class MainPage extends AppCompatActivity {
                 return true;
             case R.id.mSignOut:
                 signOut();
+             case R.id.mAbout:
+                 about();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -145,4 +151,28 @@ public class MainPage extends AppCompatActivity {
     }
 
     //***close  ENDS HERE**************************************************************
+
+    //****opens about page*************************************************************
+    public void about(){
+        buildAlertDialog2=new AlertDialog.Builder(MainPage.this);
+        inflateLayout2=LayoutInflater.from(MainPage.this);
+        View view=inflateLayout2.inflate(R.layout.about_page,null);
+
+        TextView tvOk=(TextView)view.findViewById(R.id.tvOkButton);
+
+        buildAlertDialog2.setView(view);
+        dialogBox2=buildAlertDialog2.create();
+        dialogBox2.show();
+        //ok click
+        tvOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //close dialog box
+                dialogBox2.dismiss();
+            }
+        });
+
+    }
+
+    //***close ENDS HERE**************************************************************
 }

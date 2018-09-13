@@ -10,64 +10,48 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="23dp">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:text="@string/tv_sign_out"
+                android:textColor="#263238"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                />
+            <Button
+                android:id="@+id/btnSignOutYES"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_sign_out_yes"
+                android:background="#263238"
+                android:textColor="#FFFFFF"
+                android:layout_toLeftOf="@+id/textView2"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/textView2"/>
+
+            <Button
+                android:id="@+id/btnSignOutNO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_signout_no"
+                android:background="#263238"
+                android:textColor="#FFFFFF"
+                android:layout_toRightOf="@+id/textView2"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/textView2"/>
+        </RelativeLayout>
+
+
     </android.support.v7.widget.CardView>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="23dp">
 
-    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingTop="5dp"
-        android:text="@string/tv_sign_out"
-        android:textColor="#263238"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:typeface="sans"
-          />
 
-    <Button
-        android:id="@+id/btnSignOutYES"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/btn_sign_out_yes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373"
-        android:background="#263238"
-        android:textColor="#FFFFFF"/>
-
-    <Button
-        android:id="@+id/btnSignOutNO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/btn_signout_no"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.373"
-        android:background="#263238"
-        android:textColor="#FFFFFF"/>
 </LinearLayout>

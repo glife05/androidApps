@@ -31,5 +31,9 @@
     <string name="tv_sign_out">Are you sure you want to sign out?</string>
     <string name="btn_sign_out_yes">YES</string>
     <string name="btn_signout_no">No</string>
+    <string name="tv_about">About</string>
+    <string name="tv_version">Version:Alpha beta</string>
+    <string name="tv_app_name">254Directory</string>
+    <string name="tv_ok_button">Ok</string>
 
 </resources>
