@@ -1,5 +1,6 @@
 package com.savannapeguins.droid.rwjson;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,11 +27,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String URL="https://api.reliefweb.int/v1/references/career-categories";
     private static final String TAG ="MainActivity" ;
     private static final String URL2 ="https://jsonplaceholder.typicode.com/todos/1" ;
-    private static final String url_="http://www.recipepuppy.com/api/";
+    private static final String puppy_="http://www.recipepuppy.com/api/";
     private static final String URL_OMDP="http://www.omdbapi.com/?i=tt3896198&apikey=1af79b10";
     private TextView tvResults;
-    private Button parse;
+    private Button parse,bOpen;
     private RequestQueue queue;
+   private static final String URL_Yahoo="http://www.accuweather.com/en/ke/eldoret/225630/daily-weather-forecast/225630?day=5&lang=en-us";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,31 +41,54 @@ public class MainActivity extends AppCompatActivity {
         tvResults=(TextView)findViewById(R.id.mTextViewResult);
         parse=(Button)findViewById(R.id.bParse);
         queue= Volley.newRequestQueue(this);
+        bOpen=(Button)findViewById(R.id.btnOpen);
         parse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //parseData();
                 //jsonPlaceHolder();
                 //onaApi();
-                omdpJson();
+              omdpJson();
+            }
+        });
+
+        bOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,PageViewActivity.class));
             }
         });
 
     }
 
     private void omdpJson() {
-        JsonObjectRequest movieObject=new JsonObjectRequest(Request.Method.GET, URL_OMDP,
+        String URL="http://www.omdbapi.com/?i=tt3896198&apikey=1af79b10";
+        JsonObjectRequest movieObject=new JsonObjectRequest(Request.Method.GET, URL,
                 null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
-                    /**iterates through jsonObject**/
-                    for (Iterator<String>iter=response.keys();iter.hasNext();){
-                            String title=iter.next();
-                            VolleyLog.d("Title:",response.toString());
-                            tvResults.append(title);
+                try {
+                    Log.d("Object: ",response.getString("Title").toString());
+                   // JSONObject jsonObject=response.getJSONObject("Metascore");
+                    for(int i=0;i<response.length();i++ ){
+                        JSONObject jsonObject=response.getJSONObject(String.valueOf(i));
+
                     }
 
+                   Log.d("Object :",response.getString("Year").toString());
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                /**iterates through jsonObject**/
+                  /*  for (Iterator<String>iter=response.keys();iter.hasNext();){
+                            String code=iter.next();
+                            VolleyLog.d("O");
+                           tvResults.append(code);
+                               //--tvResults.setText("Response: " + response.toString());
+                  }
+*/
 
             }
         }, new Response.ErrorListener() {
@@ -77,21 +103,22 @@ public class MainActivity extends AppCompatActivity {
 
     //******ona api data******************
     public void onaApi(){
-      JsonObjectRequest reciepepuppyObject=new JsonObjectRequest(Request.Method.GET, url_
+      JsonObjectRequest reciepepuppyObject=new JsonObjectRequest(Request.Method.GET,URL_Yahoo
               , null, new Response.Listener<JSONObject>() {
           @Override
           public void onResponse(JSONObject response) {
              /* VolleyLog.d("PuppyObject:",response.toString());
               tvResults.setText("Results:"+ response.toString());*/
+
               try {
-                  JSONArray jsonArray=response.getJSONArray("results");
+                  JSONArray jsonArray=response.getJSONArray("forecast");
                   for (int i=0;i<response.length();i++){
                       JSONObject jsonObject=jsonArray.getJSONObject(i);
 
-                      String title=jsonObject.getString("title");
-                      String ingredients=jsonObject.getString("ingredients");
-                      VolleyLog.d("Title:",response.toString());
-                      tvResults.append(ingredients);
+                      String High=jsonObject.getString("text");
+                      //String ingredients=jsonObject.getString("ingredients");
+                      VolleyLog.d("code:",response.toString());
+                      tvResults.append(High);
                   }
               } catch (JSONException e) {
                   e.printStackTrace();
@@ -112,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     //******json parsing********
     public void jsonPlaceHolder(){
-        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url_,
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, puppy_,
                 null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
