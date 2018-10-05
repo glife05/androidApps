@@ -176,9 +176,9 @@ private static final String URL_TEST="https://api.myjson.com/bins/kp9wz";
         mQueue.add(movieRequest);
     }
     private void getData() {
-       /* final ProgressDialog progressDialog=new ProgressDialog(this);
+        final ProgressDialog progressDialog=new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
-        progressDialog.show();*/
+        progressDialog.show();
 
        final JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET,URL_EQ , null, new Response.Listener<JSONObject>() {
            @Override
@@ -228,21 +228,13 @@ private static final String URL_TEST="https://api.myjson.com/bins/kp9wz";
 
                     } catch (JSONException e) {
                    e.printStackTrace();
-
+                   progressDialog.dismiss();
 
                }
 
                mAdapter.notifyDataSetChanged();
+               progressDialog.dismiss();
 
-                   /*for(int i=0;i<response.length();i++){
-                       JSONObject jsonObject=response.getJSONObject(String.valueOf(response));
-                       Forcasts forcasts=new Forcasts();
-                       forcasts.setVarDate(jsonObject.getString(""));
-
-                       forcastsList.add(forcasts);*/
-
-
-               //mAdapter.notifyDataSetChanged();
            }
        }, new Response.ErrorListener() {
            @Override

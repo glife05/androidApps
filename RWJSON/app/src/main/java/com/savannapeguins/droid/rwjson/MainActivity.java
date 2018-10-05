@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvResults=(TextView)findViewById(R.id.mTextViewResult);
-        parse=(Button)findViewById(R.id.bParse);
+     tvResults=(TextView)findViewById(R.id.mTextViewResult);
+     parse=(Button)findViewById(R.id.bParse);
         queue= Volley.newRequestQueue(this);
         bOpen=(Button)findViewById(R.id.btnOpen);
         parse.setOnClickListener(new View.OnClickListener() {

@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <RelativeLayout
         android:padding="25dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,17 +21,36 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/tv_mag"
+            android:text="Magnitude"
+            android:layout_below="@+id/tv_header"
+            android:padding="20dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/tv_date_view"
             android:padding="20dp"
             android:text="Date"
-            android:layout_below="@+id/tv_header"/>
+            android:layout_below="@+id/tv_mag"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place"
+            android:id="@+id/tv_place"
+            android:padding="20dp"
+            android:textStyle="bold"
+            android:layout_below="@id/tv_date_view"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_day_view"
             android:padding="20dp"
             android:text="Day"
-            android:layout_below="@+id/tv_date_view"/>
+            android:layout_below="@+id/tv_place"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

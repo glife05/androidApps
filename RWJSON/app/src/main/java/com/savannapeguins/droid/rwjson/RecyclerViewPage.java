@@ -47,7 +47,7 @@ public class RecyclerViewPage extends RecyclerView.Adapter<RecyclerViewPage.View
             tvDate=(TextView)itemView.findViewById(R.id.tv_date_view);
             tvDay=(TextView)itemView.findViewById(R.id.tv_day_view);
             tvCount=(TextView)itemView.findViewById(R.id.tv_count);
-            
+
         }
     }
 }
